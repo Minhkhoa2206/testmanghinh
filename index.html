@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(canvas.width, 0);
+  ctx.lineTo(canvas.width, canvas.height);
+  ctx.lineTo(0, canvas.height);
+  ctx.closePath();
+  
+  ctx.moveTo(0, 0);
+  ctx.lineTo(canvas.width, canvas.height);
+  
+  ctx.moveTo(canvas.width, 0);
+  ctx.lineTo(0, canvas.height);
+  
+  ctx.stroke();
+}
+
+window.addEventListener("resize", resizeCanvas);
+
+resizeCanvas();
+</script>
+
+</body>
+</html>
